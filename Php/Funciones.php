@@ -4,7 +4,7 @@
     //header("Cache-Control: no-cache, must-revalidate");
         
     function conexionBD() {
-        $mysqli = new mysqli('localhost','getsas_admin_gte','~jNWrz@#S50D','getsas_gte');
+        $mysqli = new mysqli();
         $mysqli->set_charset("utf8");
         return $mysqli;
     }
@@ -261,23 +261,6 @@
     }
 
     function datosUsuario($Documento) {
-        /*$datos = conexionBDUsuario();
-        $datosUsuario = array();
-        while($fila = mysqli_fetch_array($datos)) {
-            if (number_format($fila['usuario_Documento']) == number_format($Documento)) {
-                array_push($datosUsuario, $fila['usuario_Nombre']); //0
-                array_push($datosUsuario, $fila['usuario_Apellido']); //1
-                array_push($datosUsuario, $fila['usuario_Celular']); //2
-                array_push($datosUsuario, $fila['usuario_Correo']); //3
-                array_push($datosUsuario, $fila['usuario_Permiso_1']); //4
-                array_push($datosUsuario, $fila['usuario_Permiso_2']); //5
-                array_push($datosUsuario, $fila['usuario_Permiso_3']); //6
-                array_push($datosUsuario, $fila['usuario_Permiso_4']); //7
-                break;
-            }
-        }
-        return $datosUsuario;*/
-
         $conexion = conexionBD();
         $consulta = "SELECT * FROM usuario WHERE usuario_Documento='$Documento'";
         $datos = mysqli_query($conexion, $consulta);
@@ -551,29 +534,6 @@
     }
 
     function datosTercero($Nit) {
-        /*$datos = conexionBDTerceros();
-        $datosTercero = array();
-        while($fila = mysqli_fetch_array($datos)) {
-            if ($fila['tercero_Nit'] == $Nit) {
-                array_push($datosTercero, $fila['tercero_Nit']); //0
-                array_push($datosTercero, $fila['tercero_Dv']); //1
-                array_push($datosTercero, $fila['tercero_RazonSocial']); //2
-                array_push($datosTercero, $fila['tercero_Contacto']); //3
-                array_push($datosTercero, $fila['tercero_Direccion']); //4
-                array_push($datosTercero, $fila['tercero_Departamento']); //5
-                array_push($datosTercero, $fila['tercero_Ciudad']); //6
-                array_push($datosTercero, $fila['tercero_Telefono1']); //7
-                array_push($datosTercero, $fila['tercero_Telefono2']); //8
-                array_push($datosTercero, $fila['tercero_DiasPago']); //9
-                array_push($datosTercero, $fila['tercero_Email']); //10
-                array_push($datosTercero, $fila['tercero_FormaPago']); //11
-                array_push($datosTercero, $fila['tercero_PorcentajeRetefuente']); //12
-                array_push($datosTercero, $fila['tercero_PorcentajeDescuento']); //13
-                array_push($datosTercero, $fila['tercero_Ubicacion']); //14
-            }
-        }
-        return $datosTercero;*/
-
         $conexion = conexionBD();
         $consulta = "SELECT * FROM tercero WHERE tercero_Nit='$Nit'";
         $datos = mysqli_query($conexion, $consulta);
@@ -635,23 +595,6 @@
     }
 
     function datosPlantaTercero($IdPlantaTercero) {
-        /*$datos = conexionBDPlantaTercero();
-        $datosPlantaTercero = array();
-        while($fila = mysqli_fetch_array($datos)) {
-            if (number_format($fila['planta_tercero_Id']) == number_format($IdPlantaTercero)) {
-                array_push($datosPlantaTercero, $fila['planta_tercero_Id']); //0
-                array_push($datosPlantaTercero, $fila['planta_tercero_NitTercero']); //1
-                array_push($datosPlantaTercero, $fila['planta_tercero_Contacto']); //2
-                array_push($datosPlantaTercero, $fila['planta_tercero_Departamento']); //3
-                array_push($datosPlantaTercero, $fila['planta_tercero_Ciudad']); //4
-                array_push($datosPlantaTercero, $fila['planta_tercero_Direccion']); //5
-                array_push($datosPlantaTercero, $fila['planta_tercero_Telefono1']); //6
-                array_push($datosPlantaTercero, $fila['planta_tercero_Telefono2']); //7
-                array_push($datosPlantaTercero, $fila['planta_tercero_Ubicacion']); //8
-            }
-        }
-        return $datosPlantaTercero;*/
-
         $conexion = conexionBD();
         $consulta = "SELECT * FROM planta_tercero WHERE planta_tercero_Id='$IdPlantaTercero'";
         $datos = mysqli_query($conexion, $consulta);
@@ -1378,18 +1321,6 @@
         return $totalCotizaciones;
     }
 
-    /*function IdCotizacionPP($IdPP) {
-        $conexion = conexionBD();
-        $IdCotizacion = "";
-        $consulta = "SELECT cotizacion_Id FROM cotizacion WHERE cotizacion_PlanillaProduccion='$IdPP'";
-        $datos = mysqli_query($conexion, $consulta);
-        while ($fila = mysqli_fetch_array($datos)) {
-            $IdCotizacion = $fila['cotizacion_Id'];
-        }
-        mysqli_close($conexion);
-        return $IdCotizacion;
-    }*/
-
     function estaCotizacion($IdCotizacion) {
         $conexion = conexionBD();
         $ValidacionCotizacion = FALSE;
@@ -1476,101 +1407,6 @@
     }
 
     function datosCotizacion($IdCotizacion) {
-        /*$datos = conexionBDCotizacion();
-        $datosCotizacion = array();
-        while($fila = mysqli_fetch_array($datos)) {
-            if ($fila['cotizacion_Id'] == $IdCotizacion) {
-                array_push($datosCotizacion, $fila['cotizacion_Id']); //0
-                array_push($datosCotizacion, $fila['cotizacion_Año']); //1
-                array_push($datosCotizacion, $fila['cotizacion_Mes']); //2
-                array_push($datosCotizacion, $fila['cotizacion_Dia']); //3
-                array_push($datosCotizacion, $fila['cotizacion_NitTercero']); //4
-                array_push($datosCotizacion, $fila['cotizacion_DVTercero']); //5
-                array_push($datosCotizacion, datosTercero($fila['cotizacion_NitTercero'])[2]); //6
-                array_push($datosCotizacion, $fila['cotizacion_Telefono1Tercero']); //7
-                array_push($datosCotizacion, $fila['cotizacion_Telefono2Tercero']); //8
-                array_push($datosCotizacion, $fila['cotizacion_EmailTercero']); //9
-                array_push($datosCotizacion, $fila['cotizacion_CiudadTercero']); //10
-                array_push($datosCotizacion, $fila['cotizacion_DireccionTercero']); //11
-                array_push($datosCotizacion, $fila['cotizacion_ContactoTercero']); //12
-                array_push($datosCotizacion, $fila['cotizacion_FormaPago']); //13
-                array_push($datosCotizacion, $fila['cotizacion_TiempoEntrega']); //14
-                array_push($datosCotizacion, $fila['cotizacion_CiudadEntrega']); //15
-                array_push($datosCotizacion, $fila['cotizacion_DireccionEntrega']); //16
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item1']); //17
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item1']); //18
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item1']); //19
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item1']); //20
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item2']); //21
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item2']); //22
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item2']); //23
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item2']); //24
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item3']); //25
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item3']); //26
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item3']); //27
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item3']); //28
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item4']); //29
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item4']); //30
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item4']); //31
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item4']); //32
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item5']); //33
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item5']); //34
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item5']); //35
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item5']); //36
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item6']); //37
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item6']); //38
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item6']); //39
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item6']); //40
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item7']); //41
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item7']); //42
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item7']); //43
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item7']); //44
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item8']); //45
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item8']); //46
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item8']); //47
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item8']); //48
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item9']); //49
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item9']); //50
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item9']); //51
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item9']); //52
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item10']); //53
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item10']); //54
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item10']); //55
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item10']); //56
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item11']); //57
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item11']); //58
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item11']); //59
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item11']); //60
-
-                array_push($datosCotizacion, $fila['cotizacion_Detalle_Item12']); //61
-                array_push($datosCotizacion, $fila['cotizacion_Cantidad_Item12']); //62
-                array_push($datosCotizacion, $fila['cotizacion_ValorUnidad_Item12']); //63
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal_Item12']); //64
-
-                array_push($datosCotizacion, $fila['cotizacion_Subtotal']); //65
-                array_push($datosCotizacion, $fila['cotizacion_PorcentajeDescuento']); //66
-                array_push($datosCotizacion, $fila['cotizacion_ValorDescuento']); //67
-                array_push($datosCotizacion, $fila['cotizacion_ValorIVA']); //68
-                array_push($datosCotizacion, $fila['cotizacion_ValorTotal']); //69
-                array_push($datosCotizacion, $fila['cotizacion_Vendedor']); //70
-                array_push($datosCotizacion, $fila['cotizacion_PlanillaProduccion']); //71
-                array_push($datosCotizacion, $fila['cotizacion_Fecha']); //72
-                array_push($datosCotizacion, $fila['cotizacion_Anulada']); //73
-            }
-        }
-        return $datosCotizacion;*/
-
         $conexion = conexionBD();
         $consulta = "SELECT * FROM cotizacion WHERE cotizacion_Id='$IdCotizacion'";
         $datos = mysqli_query($conexion, $consulta);
